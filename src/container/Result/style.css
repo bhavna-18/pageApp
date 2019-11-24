@@ -1,0 +1,13 @@
+.resultContainer{
+    text-align: center;
+}
+.scoreText{
+    font-size: 20px;
+    font-weight: bold;
+}
+.scoreCompleteText{
+    font-size: 20px;
+}
+.buttonContainer{
+    margin-top: 5%;
+}

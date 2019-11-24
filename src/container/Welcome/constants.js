@@ -1,0 +1,2 @@
+export const HEADING_TEXT = "Welcome to Quiz-bee";
+export const INSTRUCTIONS_TEXT = "Be ready to test your General Knowledge. You will be shown some random statements, you need to tell whether the statements are true or false. \n Simple enough! Lets get started.."
