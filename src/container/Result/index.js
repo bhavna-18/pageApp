@@ -1,6 +1,6 @@
 import React from 'react';
-import style from './style.css';
 import CustomButton from '../../components/Buttons'
+let constants = require('./constants');
 
 class Result extends React.Component{
     constructor(props){
@@ -15,9 +15,9 @@ class Result extends React.Component{
     render(){
         return(
             <div className="resultContainer">
-                <span className="scoreCompleteText">Your score is <span className="scoreText">{this.props.score}/10</span> </span>
+                <span className="scoreCompleteText">{constants.SCORE_TEXT} <span className="scoreText">{this.props.score}/10</span> </span>
                 <div className="buttonContainer">
-                <CustomButton takeAction={this.playAgain} type={'outlined'} color={'primary'} buttonText={"Play Again"}/>
+                    <CustomButton takeAction={this.playAgain} type={'contained'} style={buttonStyle} buttonText={"Play Again"}/>
                 </div>
             </div>
         )
@@ -25,3 +25,9 @@ class Result extends React.Component{
 }
 
 export default Result;
+
+const buttonStyle = {
+    backgroundColor:'#fc8a26',
+    fontSize:'20px',
+    fontWeight:'bold'
+}

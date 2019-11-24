@@ -1,5 +1,5 @@
 .questionContainer{
-    background-color:#faefe1 !important;
+    background-color:#fcf1e3 !important;
     margin-top:2%;
     margin-left: 10%;
     margin-right: 10%;  
@@ -22,13 +22,13 @@
 }
 .nextButtonContainer{
     text-align:center;
-    margin-top: 2.5%"";
+    margin-top: 2.5%;
 }
 .subHeaderText{
     text-decoration-line: underline;
     text-align: center;
     text-decoration-style: solid;
-    text-decoration-color: coral;
+    text-decoration-color:#fc8a26;
     bottom: 1px;
     border-width: 0 0 1px;
 }

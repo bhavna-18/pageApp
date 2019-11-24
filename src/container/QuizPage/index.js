@@ -6,11 +6,12 @@ import {connect} from 'react-redux';
 import CustomButton from '../../components/Buttons';
 import helper from '../../utilities/helper';
 import Result from '../Result/index';
-import {incrementQuestionCounter, incrementCorrectCounter,isNextVisible} from '../../actions/index';
+import {incrementQuestionCounter, incrementCorrectCounter,isNextVisible,setButtonValue} from '../../actions/index';
 import {bindActionCreators} from 'redux';
-
-
 import PropTypes from'prop-types';
+import Answer from '../../components/Answer'
+
+let appconfig = require('../../appConfig')
 
 class QuizPage extends React.Component{
 
@@ -18,8 +19,6 @@ class QuizPage extends React.Component{
         super(props);
         this.questions = [];
         this.correct_answer = [];
-        this.correct_value = "";
-        this.createObj={};
     }
 
     componentDidMount(){
@@ -32,59 +31,40 @@ class QuizPage extends React.Component{
         )
     } 
 
-    changeStyling = function (val){
-        console.log("value is",val);
-        console.log("value" ,this.createObj)
-        if(this.props.isClicked){
-            if(this.createObj.value === this.createObj.correctValue){
-                return {
-                    backgroundColor: '#40a147',
-                    fontSize:'16px',
-                    fontWeigth:'bold'
-                }
-            }
-            else{
-                return {
-                    backgroundColor : '#fc2a0a',
-                }
-            }
-        }
-        else{
-            return {
-                backgroundColor : '#fc8a26',
-                color:'black',
-                fontSize: '18px',
-            }
-        }
-    }
-
     renderOptions = () =>{
         return (
             <div className="optionsContainer">
-                <CustomButton 
+               <CustomButton 
                     takeAction={()=>this.checkAnswer("true")} 
                     type={'contained'} 
-                    style={this.props.isCorrect ? correctButton : incorrectButton} 
+                    style={{backgroundColor: this.props.isClicked && this.props.buttonValue ==='true' ? (this.correct_answer[this.props.counter].toLowerCase() === 'true'? appconfig.CORRECT_BUTTON_COLOR :appconfig.INCORRECT_BUTTON_COLOR  ): appconfig.BUTTON_PRIMARY,fontSize:'18px',color:appconfig.TEXT_COLOR}} 
                     buttonText={"True"}/>
                 <CustomButton 
                     takeAction={()=>this.checkAnswer("false")}
                     type={'contained'} 
-                    style={this.props.isClicked ? (this.props.correct ? correctButton : incorrectButton) : defaultButton} 
-                    // style={this.props.isClicked ? (this.props.correct ? correctButton : incorrectButton) : defaultButton} 
+                    style={{backgroundColor: this.props.isClicked && this.props.buttonValue ==='false' ? (this.correct_answer[this.props.counter].toLowerCase() === 'false'? appconfig.CORRECT_BUTTON_COLOR : appconfig.INCORRECT_BUTTON_COLOR):appconfig.BUTTON_PRIMARY,fontSize:'18px',color:appconfig.TEXT_COLOR}} 
                     buttonText={"False"}/>
             </div>
         )
     }
 
 
-    checkAnswer (value) {
+    renderSolution(){
+        return(
+            <div style={{backgroundColor:'yellow'}}>
+                <Answer isCorrect= {this.props.correct}/>
+            </div>
+        )
+    }
+
+    checkAnswer = (value) =>{
+        this.props.setbuttonValue(value);
         if(!this.props.isDisable){
             if(value === this.correct_answer[this.props.counter]){
                 this.props.incrementCorrectAnswer();
             }
             else{
                 /**for changing the state */
-                this.correct_value = "false"
                 this.props.renderShowNext();
             }
         }
@@ -134,6 +114,7 @@ class QuizPage extends React.Component{
                     {this.renderNumberQuestions()}
                     {this.renderQuestions()} 
                     {this.renderOptions()}
+                    {this.props.isClicked && this.renderSolution()}
                 </div>
             )
         }
@@ -146,7 +127,7 @@ class QuizPage extends React.Component{
     render(){
         let content = <div></div>
         if(this.props.fetchQuestions.isFetching){
-            content = <div className="circularProgress"><CircularProgress/></div>
+            content = <div className="circularProgress"><CircularProgress color={'secondary'}/></div>
         }
         else if(this.props.fetchQuestions.data !== undefined && this.props.fetchQuestions.data.length > 0){
             content = (
@@ -154,10 +135,10 @@ class QuizPage extends React.Component{
                             <Card className="questionContainer">
                                 {this.setValues()}
                                 {this.renderQuizPage()}
-                                {this.props.counter === this.questions.length && <Result score={this.props.correctCounter+1}/>}
+                                {this.props.counter === this.questions.length && <Result score={this.props.correctCounter}/>}
                                 
                             </Card>
-                            {/** for gettingt the value from state */}
+                            {/** for getting the value from state */}
                             {this.props.showNextButton && this.renderNextButton()}
                         </div>
                     )
@@ -178,7 +159,7 @@ QuizPage.propTypes = {
 
 
 const mapStateToProps = (state) =>{
-    console.log("state=>",state)
+    console.log("state => ",state)
     return {
        fetchQuestions: state,
        counter: state.count,
@@ -186,7 +167,8 @@ const mapStateToProps = (state) =>{
        correctCounter: state.correctCount,
        showNextButton: state.showNext,
        isClicked: state.clicked,
-       isDisable: state.disabled
+       isDisable: state.disabled,
+       buttonValue : state.buttonValue
     }
 }
 
@@ -196,31 +178,14 @@ const mapDispatchToProps = (dispatch) =>{
         incrementCorrectAnswer: incrementCorrectCounter,
         renderShowNext : isNextVisible,
         loadQuestions: loadQuestions,
+        setbuttonValue: setButtonValue
     },dispatch)
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(QuizPage);
 
-
-const correctButton = {
-    backgroundColor: '#40a147',
-    fontSize:'16px',
-    fontWeigth:'bold'
-}
-
-const incorrectButton = {
-    backgroundColor : '#fc2a0a',
-}
-
 const defaultButton = {
-    backgroundColor : '#fc8a26',
-    color:'black',
+    backgroundColor : appconfig.BUTTON_PRIMARY,
+    color:appconfig.TEXT_COLOR,
     fontSize: '18px',
 }
-
-
-
-
-
-//2. result page
-//3. button clor

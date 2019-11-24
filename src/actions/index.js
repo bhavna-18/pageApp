@@ -6,6 +6,7 @@ import {
     INCREMENT_QUESTIONS,
     CORRECT_ANSWER,
     SHOW_NEXT,
+    SET_BUTTON_VALUE
   } from './types';
 
 export function incrementQuestionCounter() {
@@ -22,6 +23,11 @@ export function  isNextVisible() {
 
 export const fetchingQuestionsRequest = () => ({
     type: FETCHING_QUESTIONS_REQUEST,
+})
+
+export const setButtonValue = (val) =>({
+  type: SET_BUTTON_VALUE,
+  payload : val
 })
 
 export const fetchQuestionsSuccess = (json) =>({

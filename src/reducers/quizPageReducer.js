@@ -5,6 +5,7 @@ import {
     INCREMENT_QUESTIONS,
     CORRECT_ANSWER,
     SHOW_NEXT,
+    SET_BUTTON_VALUE,
 } from '../actions/types';
 
 const intialState = {
@@ -16,6 +17,7 @@ const intialState = {
     showNext:false,
     clicked: false,
     correctCount: 0,
+    buttonValue:"",
 }
 
 /**
@@ -66,6 +68,11 @@ const quizPageReducer = (state=intialState,action) => {
                 showNext: true,
                 clicked: true,
                 disabled: true
+            }
+        case SET_BUTTON_VALUE:
+            return {
+                ...state,
+                buttonValue:action.payload
             }
         default:
             return{

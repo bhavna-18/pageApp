@@ -1,0 +1,9 @@
+export const BUTTON_PRIMARY = "#fc8a26";
+export const CORRECT_BUTTON_COLOR = "#0fab1a";
+export const INCORRECT_BUTTON_COLOR = "#eb0d09";
+export const HEADER_BG_COLOR = '#000000';
+export const HEADER_TEXT_COLOR = '#fc8a26';
+export const TEXT_COLOR = '#000000';
+export const QUIZ_BG_COLOR = "#faefe1";
+export const WELCOME_BG_COLOR = "#fce3c5";
+export const ANSWER_BG_COLOR = "#696661"

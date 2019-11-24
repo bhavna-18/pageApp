@@ -1,5 +1,5 @@
 import React from 'react';
-
+let appconfig = require('../appConfig');
 const Header = () => {
     return (
         <div style={headerDiv}>
@@ -12,10 +12,11 @@ export default Header;
 
 const headerDiv = {
     marginTop: '30px',
-    border: '4px solid #fc8a26',
-    backgroundColor:'black'
+    border: '4px solid ',
+    borderColor: appconfig.HEADER_TEXT_COLOR,
+    backgroundColor: appconfig.HEADER_BG_COLOR
   };
   const headerText = {
-    color:'#fc8a26',
+    color: appconfig.HEADER_TEXT_COLOR,
     textAlign: 'center'
   };

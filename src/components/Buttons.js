@@ -1,14 +1,12 @@
 import React from 'react';
 import {Button} from '@material-ui/core';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+let appconfig = require('../appConfig')
 
 const theme = createMuiTheme({
     palette: {
-      secondary: {
-          main: '#fc8a26',
-        },
         primary :{
-            main: '#fc8a26',
+            main: appconfig.BUTTON_PRIMARY,
         }
       }
     },
@@ -28,6 +26,7 @@ const CustomButton = (props) =>{
                 variant={props.type} 
                 color={props.color}
                 size="medium"
+                id={props.id}
                 style={buttonStyle}
                 value={props.buttonText.toLowerCase()}
                 onClick={handleClick}> 
