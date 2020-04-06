@@ -1,21 +1,19 @@
-import React from 'react';
-import {Route,Switch,BrowserRouter} from 'react-router-dom';
+import React from "react";
+import { Route, Switch, BrowserRouter } from "react-router-dom";
 
-import Welcome from './container/Welcome';
-import QuizPage from './container/QuizPage';
-
+import FirstPage from "./container/FirstPage";
+import SecondPage from "./container/SecondPage";
 class Routes extends React.Component {
-    render(){
-        return (
-            <BrowserRouter>
-                <Switch>
-                    <Route exact path="/" component={Welcome}></Route>
-                    <Route path="/quiz" component={QuizPage}></Route>
-                </Switch>
-            </BrowserRouter>
-        )
-    }
+  render() {
+    return (
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={FirstPage}></Route>
+          <Route path="/image" component={SecondPage}></Route>
+        </Switch>
+      </BrowserRouter>
+    );
+  }
 }
 
 export default Routes;
-

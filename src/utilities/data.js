@@ -1,0 +1,61 @@
+export const data = [
+  {
+    image: require("../assets/pasta.jpeg"),
+    heading: "Barbeque Nation",
+    altName: "pasta",
+    rating: 4.8,
+    location: "Pan India",
+    voucherType: "Food voucher",
+    discount:
+      "Buy a gift voucher worth rupees 18000 and get 2 complimentary mocktails/ beer pint",
+    offers: "1 more offer(s)",
+    url:
+      "https://www.jocooks.com/wp-content/uploads/2012/09/rigatoni-in-blush-sauce-with-chicken-and-bacon-11-480x270.jpg",
+  },
+  {
+    image: require("../assets/rolls.jpg"),
+    heading: "Fassos",
+    rating: 4,
+    altName: "rolls",
+    location: "Mumbai, Pune, Nagpur,Delhi",
+    voucherType: "",
+    discount: "Rs. 150 off on min order of Rs 200",
+    offers: "",
+    url:
+      "https://www.kawalingpinoy.com/wp-content/uploads/2014/08/ham-and-cheese-bread-rolls-5-1-480x270.jpg",
+  },
+  {
+    image: require("../assets/cake.jpg"),
+    heading: "Firangi Bake",
+    rating: 2.1,
+    altName: "cake",
+    location: "Mumbai",
+    voucherType: "Food voucher",
+    discount: "50% off upto Rs 75 on min order 99",
+    offers: "1 more offer(s)",
+    url: "https://i.ytimg.com/vi/POIRZClyEPI/hqdefault.jpg",
+  },
+  {
+    image: require("../assets/rajma.jpg"),
+    heading: "Good bowl",
+    rating: 3.8,
+    altName: "rajma",
+    location: "Pan India",
+    voucherType: "Food voucher",
+    discount: "50% off upto Rs 75 on min order 99",
+    offers: "",
+    url:
+      "https://m.recipes.timesofindia.com/thumb/64186705.cms?imgsize=338624&width=800&height=800",
+  },
+  {
+    image: require("../assets/maggie.jpg"),
+    heading: "Mandarian Oak",
+    rating: 4.8,
+    altName: "maggie",
+    location: "Pune,Delhi",
+    voucherType: "Food voucher",
+    discount: "Rs 100 off",
+    offers: "15 offers",
+    url: "https://i.ytimg.com/vi/POIRZClyEPI/hqdefault.jpg",
+  },
+];
